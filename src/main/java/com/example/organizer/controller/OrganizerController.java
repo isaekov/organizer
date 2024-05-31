@@ -2,6 +2,7 @@ package com.example.organizer.controller;
 
 import com.example.organizer.entity.Status;
 import com.example.organizer.entity.Task;
+import com.example.organizer.entity.User;
 import com.example.organizer.rpository.StatusRepository;
 import com.example.organizer.rpository.TaskRepository;
 import com.example.organizer.service.StatusService;
@@ -40,7 +41,7 @@ public class OrganizerController {
         this.userService = userService;
     }
 
-    // Получение всех задач
+    // >>> Task
     @GetMapping()
     public String listTask(Model model) {
         model.addAttribute("tasks", taskRepository.findAll());
@@ -69,7 +70,15 @@ public class OrganizerController {
         return "redirect:/";
     }
 
+    @GetMapping("/task-delete/{id}")
+    public String delete(@PathVariable("id") int id) {
+        taskService.delete(id);
+        return "redirect:/";
+    }
 
+    // <<< Task
+
+    // >>>> Status
     @GetMapping("/new-status")
     public String storeTemplateStatus() {
         return "status-edit";
@@ -80,5 +89,35 @@ public class OrganizerController {
         statusService.newCreate(status);
         return "redirect:/";
     }
+
+    // <<<< Status
+
+
+    // >>>> User
+
+    @GetMapping("/users")
+    public String allUser(Model model) {
+
+        model.addAttribute("users", userService.userAll());
+        return "user-list";
+
+    }
+
+    @GetMapping("/new-user")
+    public String newUser() {
+        return "user-edit";
+    }
+
+    @PostMapping("/new-user")
+    public String newUser(User user) {
+
+        userService.save(user);
+        return "redirect:/users";
+    }
+
+    // Так же по аналогии с Задачей удаление редактирование пользователя
+    // <<<< User
+
+
 
 }

@@ -26,4 +26,14 @@ public class TaskService {
         }
         return optionalTask.get();
     }
+
+    public void delete(int userId) {
+       Optional<Task> optionalTask =  taskRepository.findById(userId);
+
+        if (optionalTask.isEmpty()) {
+            throw new RuntimeException("Задача не найдена");
+        }
+
+        taskRepository.delete(optionalTask.get());
+    }
 }

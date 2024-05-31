@@ -1,0 +1,35 @@
+    {% extends "layout" %}
+
+        {% set name = "Пользователь" %}
+    {% block content %}
+    <div class="card">
+        <div class="card-header">
+            <p class="card-title"></p>
+        </div>
+
+        <form action="new-user" method="post">
+            <div class="card-body">
+                <div class="form-group">
+                    <label>Имя</label>
+                    <input type="text" class="form-control" name="fio">
+                </div>
+
+                <div class="form-group">
+                    <label >Логин</label>
+                    <input name="username" type="text" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label >Почта</label>
+                    <input name="email" type="text" class="form-control">
+                </div>
+
+            </div>
+
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Создать</button>
+            </div>
+
+        </form>
+    </div>
+    {% endblock %}

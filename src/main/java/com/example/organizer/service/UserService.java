@@ -4,6 +4,8 @@ import com.example.organizer.entity.User;
 import com.example.organizer.rpository.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
 
@@ -15,9 +17,11 @@ public class UserService {
     }
 
     public void save(User user) {
-
         userRepository.save(user);
+    }
 
+    public List<User> userAll() {
+        return userRepository.findAll();
     }
 
 
