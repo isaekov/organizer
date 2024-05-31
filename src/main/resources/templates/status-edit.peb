@@ -1,0 +1,22 @@
+{% extends "layout" %}
+    {% set name = "Новый статус" %}
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <p class="card-title">#</p>
+    </div>
+    <form action="new-status" method="post">
+        <div class="card-body">
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">Статус</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" name="name">
+            </div>
+
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Создать</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
